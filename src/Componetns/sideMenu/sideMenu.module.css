@@ -14,6 +14,7 @@
     padding-inline-start: 60px;
     padding-top: 32px;
     max-width: 280px;
+    padding-right: 15px;
 }
 
 .side-menu__logo {
@@ -30,6 +31,12 @@
 
 .menu__item:hover {
     color: #6B27FF
+}
+
+.menu__item_active {
+    color: #6B27FF;
+    background-color: #F4F4F6;
+    border-radius: 8px;
 }
 
 .ul__menu1 {

@@ -1,10 +1,11 @@
-import styles from './signIn.module.css'
 import SignHeader from "../../Componetns/signComponents/signHeader/SignHeader.jsx";
+import styles from "./signUp.module.css";
 import {Link} from "react-router-dom";
-import pipe from '../../assets/img/Group 1.png'
 import SignInForm from "../../Componetns/signComponents/signInForm/SignInForm.jsx";
+import pipe from "../../assets/img/Group 1.png";
+import SignUpForm from "../../Componetns/signComponents/signUpForn/SignUpForm.jsx";
 
-function SignIn(props) {
+function SignUp() {
   return (
     <>
       <SignHeader />
@@ -17,17 +18,13 @@ function SignIn(props) {
             </svg>
             Вернуться на главную
           </Link>
-          <h1 className={styles['sign-in__title']}>Вход</h1>
+          <h1 className={styles['sign-in__title']}>Регистрация</h1>
           <p className={styles['sign-in__text']}>
-            Войдите в систему, чтобы начать пользоваться сервисом. <br/>
-            Вы еще не зарегистрированны на сайте? <Link to='/signup'>Зарегистрироваться</Link>
+            Выберите тип регистрации и введите необходимые данные. <br/>
+            Вы уже зарегистрированны на сайте?  <Link to='/signup'>Войти</Link>
           </p>
         </div>
-        <div className={styles['sign-in__forget-container']}>
-          <div className={styles['sign-in__forget-title']}>Забыли пароль?</div>
-          <a href="" className={styles['sign-in__forget-link']}>Восстановить</a>
-        </div>
-        <SignInForm />
+        <SignUpForm />
         <div>
           <img src={pipe} alt="" className={styles['imgback']}/>
         </div>
@@ -36,4 +33,4 @@ function SignIn(props) {
   );
 }
 
-export default SignIn;
+export default SignUp;

@@ -5,7 +5,7 @@ import styles from "./compositions.module.css"
 function Compositions(props) {
   return (
     <main className={styles.compositions}>
-      <SideMenu />
+      <SideMenu activeSection={'compositions'}/>
       <Player />
     </main>
   );

@@ -57,7 +57,6 @@
 
 .rhap_progress-section {
   display: flex;
-  flex: 3 1 auto;
   align-items: center;
 }
 
@@ -128,7 +127,6 @@
 
 .rhap_controls-section {
   display: flex;
-  flex: 1 1 auto;
   justify-content: space-between;
   align-items: center;
 }
@@ -186,6 +184,7 @@
 
 .rhap_volume-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   flex: 0 1 100px;
   user-select: none;
