@@ -7,7 +7,7 @@ function SignHeader(props) {
     <ul className={styles['nav__body']}>
       <li><a href="#" className={styles['nav__link']}>О проекте</a></li>
       <li><a href="#" className={styles['nav__link']}>Команда</a></li>
-      <li><a href="#" className={styles['nav__link']}>Галереая</a></li>
+      <li><a href="#" className={styles['nav__link']}>Галерея</a></li>
       <li><a href="#" className={styles['nav__link']}>Связаться с нами</a></li>
     </ul>
   return (

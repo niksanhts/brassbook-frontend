@@ -21,7 +21,7 @@ function SignUp() {
           <h1 className={styles['sign-in__title']}>Регистрация</h1>
           <p className={styles['sign-in__text']}>
             Выберите тип регистрации и введите необходимые данные. <br/>
-            Вы уже зарегистрированны на сайте?  <Link to='/signup'>Войти</Link>
+            Вы уже зарегистрированны на сайте?  <Link to='/signin'>Войти</Link>
           </p>
         </div>
         <SignUpForm />
