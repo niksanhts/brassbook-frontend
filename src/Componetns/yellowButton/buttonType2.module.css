@@ -1,20 +1,22 @@
 .button-type-2 {
   border-radius: 60px;
   background: var(--accent-color);
-  display: inline-block;
-  padding: 16px 32px;
+  display: inline-flex;
+  padding: 8px 24px 8px 24px;
   width: auto;
-  margin-bottom: 20px;
+  margin-top: 10px;
   text-decoration: none;
   color: var(--font-color);
   font-family: var(--accent-font);
-  font-size: clamp(0.625rem, 0.216rem + 2.05vw, 1.75rem);
+  font-size: 16px;
   font-weight: 800;
   line-height: 1.4;
   letter-spacing: -0.28px;
   text-transform: uppercase;
   transition: background 0.2s;
   border: none;
+  justify-content: center;
+  align-items: center;
 }
 .button-type-2:hover {
   background: linear-gradient(180deg, #EEDD51 31.97%, #EEAF51 86.89%);

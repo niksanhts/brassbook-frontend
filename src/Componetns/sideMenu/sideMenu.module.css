@@ -33,7 +33,7 @@
     color: #6B27FF
 }
 
-.menu__item_active {
+.menu__item_active {    
     color: #6B27FF;
     background-color: #F4F4F6;
     border-radius: 8px;
