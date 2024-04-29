@@ -14,6 +14,7 @@ function Voicerecorder() {
                 const recorder = new MediaRecorder(stream);
 
                 recorder.ondataavailable = (e) => {
+                    console.log((audioChunks))
                     setAudioChunks([...audioChunks, e.data]);
                 };
 
@@ -39,7 +40,9 @@ function Voicerecorder() {
             setRecording(false);
         }
     };
-
+    // const handleClear = () =>{
+    //     audioBlob = []
+    // }
     const playAudio = () => {
         if (audioChunks.length > 0) {
             const audioBlob = new Blob(audioChunks, { type: 'audio/ogg' });
@@ -48,7 +51,11 @@ function Voicerecorder() {
             audio.play();
             setIsPlaying(true);
         }
+
+
     };
+
+
 
         return (
           <div className={classes.voicerecorder}>
@@ -60,15 +67,18 @@ function Voicerecorder() {
                 </div>
                 {/* <YellowButton onClick={startRecording} className={'voicerecorder_btn button-type-2'}>ЗАПИСАТЬ ПРОИЗВЕДЕНИЕ</YellowButton> */}
                 <div>
-                    <button onClick={startRecording} disabled={recording}>
-                {recording ? 'Recording...' : 'Start Recording'}
-                    </button>
-                    <button onClick={stopRecording} disabled={!recording}>
-                        Stop Recording
-                    </button>
-                    <button onClick={playAudio} disabled={!isPlaying}>
-                        Play Recorded Audio
-                    </button>
+                    <YellowButton onClick={startRecording} disabled={recording}>
+                {recording ? 'Идет запись' : 'Начать Запись'}
+                    </YellowButton>
+                    <YellowButton onClick={stopRecording} disabled={!recording}>
+                        Остановить запись
+                    </YellowButton>
+                    <YellowButton onClick={playAudio} disabled={isPlaying}>
+                        Воспроизвести запись
+                    </YellowButton>
+                    {/* <button onClick={handleClear}>
+                        clear
+                    </button> */}
         </div>
             </div>
   
