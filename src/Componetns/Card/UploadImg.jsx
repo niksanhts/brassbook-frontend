@@ -2,29 +2,29 @@ import React, { useState } from "react";
 import classes from "./UploadImg.module.css";
 
 const UploadAndDisplayImage = () => {
+  const defaultImageUrl = 'public/фото.png'; // Замени на путь к дефолтному изображению
+
   const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageChange = (event) => {
+    setSelectedImage(event.target.files[0]);
+  };
+
   return (
     <div>
-      {selectedImage && (
-        <div>
-          <img
-            alt="not found"
-            width={"220px"}
-            height={"350px"}
-            src={URL.createObjectURL(selectedImage)}
-            className={classes.img__card}
-          />
-        </div>
-      )}
+      <img
+        alt="not found"
+        width="220px"
+        height="350px"
+        src={selectedImage ? URL.createObjectURL(selectedImage) : defaultImageUrl}
+        className={classes.img__card}
+      />
       <input
         type="file"
         name="myImage"
         className={classes.img__input}
-        onChange={(event) => {
-          console.log(event.target.files[0]);
-          setSelectedImage(event.target.files[0]);
-        }}
-      ></input>
+        onChange={handleImageChange}
+      />
       <div className={classes.div__inf}>
         <div>
           <p className={classes.p__head}>Имя</p>
@@ -158,7 +158,7 @@ const UploadAndDisplayImage = () => {
         </p>
       </div>
       <div className={classes.div__change}>
-        <p className={classes.p__change}>
+        <a href="" className={classes.p__change}>
           Редактировать личные данные{" "}
           <svg
             width="16.000000"
@@ -179,8 +179,8 @@ const UploadAndDisplayImage = () => {
             />
             <g opacity="0.000000" />
           </svg>
-        </p>
-        <p className={classes.p__change}>
+        </a>
+        <a href="" className={classes.p__change}>
           Изменить пароль{" "}
           <svg
             width="16.000000"
@@ -201,7 +201,7 @@ const UploadAndDisplayImage = () => {
             />
             <g opacity="0.000000" />
           </svg>
-        </p>
+        </a>
       </div>
     </div>
   );
