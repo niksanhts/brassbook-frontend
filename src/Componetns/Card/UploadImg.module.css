@@ -30,6 +30,8 @@
   content: "Изменить фотографию";
   margin-top: -39px;
   margin-inline-start: 20px;
+  backdrop-filter: blur(10px);
+  color: black;
 }
 
 .img__input::-webkit-file-upload-button {
@@ -188,30 +190,31 @@
 
 .p__change {
     position: static;
-width: 251px;
-height: 17px;
-/* Автолейаут */
-display: flex;
-flex-direction: row;
-justify-content: flex-start;
-align-items: center;
-padding: 0px;
+    cursor: pointer;
+    width: 251px;
+    height: 17px;
+    /* Автолейаут */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px;
 
-/* Inside Auto Layout */
-flex: none;
-order: 0;
-flex-grow: 0;
-margin: 0px 4px;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 4px;
 
 
-color: rgba(35, 11, 63, 0.3);
-font-family: Inter;
-font-size: 12px;
-font-weight: 500;
-line-height: 140%;
-letter-spacing: -2%;
-text-align: left;
-align-items: flex-end;
+    color: rgba(35, 11, 63, 0.3);
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: -2%;
+    text-align: left;
+    align-items: flex-end;
 }
 
 .div__change {

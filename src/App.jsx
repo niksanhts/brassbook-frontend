@@ -9,9 +9,9 @@ import { useEffect } from 'react';
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { $api } from './api/index.js';
+import { setIsAuthorized, setUser } from './store/userSlice.js';
 
 function App() {
-  const [count, setCount] = useState(0)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -39,8 +39,9 @@ function App() {
       userData = user;
     }
 
-    console.log('user', user)
-  }, [])
+    dispatch(setIsAuthorized(true))
+    dispatch(setUser(userData.user))
+  }, [dispatch, navigate])
 
   useEffect(() => {
     checkAuthentication();
