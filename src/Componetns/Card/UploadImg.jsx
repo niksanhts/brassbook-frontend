@@ -1,13 +1,25 @@
-import React, { useState } from "react";
 import classes from "./UploadImg.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { $api } from "../../api";
+import { setUser } from "../../store/userSlice";
 
 const UploadAndDisplayImage = () => {
   const defaultImageUrl = 'public/фото.png'; // Замени на путь к дефолтному изображению
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user.user);
 
-  const [selectedImage, setSelectedImage] = useState(null);
+  console.log('user', user)
+  const handleImageChange = async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
 
-  const handleImageChange = (event) => {
-    setSelectedImage(event.target.files[0]);
+
+    const form = new FormData();
+    form.append('avatar', file);
+
+    const { data: updatedUserData } = await $api.put('/v1/auth/avatar', form);
+    dispatch(setUser(updatedUserData.user))
+    console.log('result', updatedUserData)
   };
 
   return (
@@ -16,11 +28,12 @@ const UploadAndDisplayImage = () => {
         alt="not found"
         width="220px"
         height="350px"
-        src={selectedImage ? URL.createObjectURL(selectedImage) : defaultImageUrl}
+        src={user?.avatar ? user.avatar : defaultImageUrl}
         className={classes.img__card}
       />
       <input
         type="file"
+        accept="image/*"
         name="myImage"
         className={classes.img__input}
         onChange={handleImageChange}
@@ -28,15 +41,15 @@ const UploadAndDisplayImage = () => {
       <div className={classes.div__inf}>
         <div>
           <p className={classes.p__head}>Имя</p>
-          <p className={classes.p__text}>Валерка</p>
+          <p className={classes.p__text}>{user?.first_name ? user.first_name : '<Имя не задано>'}</p>
         </div>
         <div>
           <p className={classes.p__head}>Фамилия</p>
-          <p className={classes.p__text}>Борисов</p>
+          <p className={classes.p__text}>{user?.second_name ? user.second_name : '<Фамилия не задана>'}</p>
         </div>
         <div>
           <p className={classes.p__head}>Почта</p>
-          <p className={classes.p__text}>paren@molodec.ru</p>
+          <p className={classes.p__text}>{user ? user.email : ''}</p>
         </div>
       </div>
       <div className={classes.div__description}>
@@ -57,14 +70,14 @@ const UploadAndDisplayImage = () => {
               width="20.000000"
               height="20.000000"
               fill="#F70A51"
-              fill-opacity="0.100000"
+              fillOpacity="0.100000"
             />
             <path
               id="Vector"
               d="M12.59 4.8C11.53 4.8 10.58 5.32 10 6.1C9.41 5.32 8.46 4.8 7.41 4.8C5.61 4.8 4.16 6.26 4.16 8.06C4.16 8.76 4.27 9.4 4.47 10C5.39 12.91 8.23 14.66 9.63 15.13C9.83 15.2 10.16 15.2 10.36 15.13C11.76 14.66 14.6 12.91 15.53 10C15.72 9.4 15.83 8.76 15.83 8.06C15.83 6.26 14.38 4.8 12.59 4.8Z"
               fill="#F70A51"
-              fill-opacity="1.000000"
-              fill-rule="nonzero"
+              fillOpacity="1.000000"
+              fillRule="nonzero"
             />
             <g opacity="0.000000" />
           </svg>
@@ -88,7 +101,7 @@ const UploadAndDisplayImage = () => {
                   width="20.000000"
                   height="20.000000"
                   fill="white"
-                  fill-opacity="1"
+                  fillOpacity="1"
                 />
               </clipPath>
               <pattern
@@ -98,7 +111,7 @@ const UploadAndDisplayImage = () => {
                 height="1.000000"
               >
                 <use
-                  xlink:href="#image467_475_0"
+                  xlinkHref="#image467_475_0"
                   transform="matrix(0.000501,0,0,0.000735,-0.000853,0)"
                 />
               </pattern>
@@ -109,15 +122,15 @@ const UploadAndDisplayImage = () => {
               width="20.000000"
               height="20.000000"
               fill="#F70A51"
-              fill-opacity="0.100000"
+              fillOpacity="0.100000"
             />
-            <g clip-path="url(#clip467_469)">
+            <g clipPath="url(#clip467_469)">
               <path
                 id="Vector"
                 d="M12.59 4.8C11.53 4.8 10.58 5.32 10 6.1C9.41 5.32 8.46 4.8 7.41 4.8C5.61 4.8 4.16 6.26 4.16 8.06C4.16 8.76 4.27 9.4 4.47 10C5.39 12.91 8.23 14.66 9.63 15.13C9.83 15.2 10.16 15.2 10.36 15.13C11.76 14.66 14.6 12.91 15.53 10C15.72 9.4 15.83 8.76 15.83 8.06C15.83 6.26 14.38 4.8 12.59 4.8Z"
                 fill="#F70A51"
-                fill-opacity="1.000000"
-                fill-rule="nonzero"
+                fillOpacity="1.000000"
+                fillRule="nonzero"
               />
               <g opacity="0.000000" />
               <rect
@@ -127,7 +140,7 @@ const UploadAndDisplayImage = () => {
                 width="42.574467"
                 height="29.000000"
                 fill="url(#pattern_467_4750)"
-                fill-opacity="0.000000"
+                fillOpacity="0.000000"
               />
               <rect
                 id="3d-render-retro-microphone-short-leg-stand-with-headphone-3d-illustration-design 1"
@@ -136,7 +149,7 @@ const UploadAndDisplayImage = () => {
                 width="42574467"
                 height="29000000"
                 fill="#000000"
-                fill-opacity="0.200000"
+                fillOpacity="0.200000"
               />
               <rect
                 id="Rectangle27"
@@ -145,7 +158,7 @@ const UploadAndDisplayImage = () => {
                 width="39489361"
                 height="21595745"
                 fill="#6B27FF"
-                fill-opacity="0.700000"
+                fillOpacity="0.700000"
               />
             </g>
           </svg>
@@ -174,8 +187,8 @@ const UploadAndDisplayImage = () => {
               id="Vector"
               d="M10.13 6.49L8.82 5.18L6.68 3.04C6.22 2.59 5.45 2.91 5.45 3.55L5.45 7.7L5.45 11.44C5.45 12.08 6.22 12.4 6.68 11.95L10.13 8.5C10.68 7.95 10.68 7.04 10.13 6.49Z"
               fill="#230B3F"
-              fill-opacity="0.300000"
-              fill-rule="nonzero"
+              fillOpacity="0.300000"
+              fillRule="nonzero"
             />
             <g opacity="0.000000" />
           </svg>
@@ -196,8 +209,8 @@ const UploadAndDisplayImage = () => {
               id="Vector"
               d="M10.13 6.49L8.82 5.18L6.68 3.04C6.22 2.59 5.45 2.91 5.45 3.55L5.45 7.7L5.45 11.44C5.45 12.08 6.22 12.4 6.68 11.95L10.13 8.5C10.68 7.95 10.68 7.04 10.13 6.49Z"
               fill="#230B3F"
-              fill-opacity="0.300000"
-              fill-rule="nonzero"
+              fillOpacity="0.300000"
+              fillRule="nonzero"
             />
             <g opacity="0.000000" />
           </svg>

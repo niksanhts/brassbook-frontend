@@ -1,18 +1,22 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-  isAuthorized: false
+  isAuthorized: false,
+  user: null,
 }
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
     setIsAuthorized: (state, action) => {
-     state.isAuthorized = action.payload
+      state.isAuthorized = action.payload
+    },
+    setUser: (state, action) => {
+      state.user = action.payload
     }
   }
 })
 
-export const { setIsAuthorized } = userSlice.actions
+export const { setIsAuthorized, setUser } = userSlice.actions
 
 export default userSlice.reducer

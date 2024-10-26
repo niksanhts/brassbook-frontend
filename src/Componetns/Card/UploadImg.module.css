@@ -30,6 +30,8 @@
   content: "Изменить фотографию";
   margin-top: -39px;
   margin-inline-start: 20px;
+  backdrop-filter: blur(10px);
+  color: black;
 }
 
 .img__input::-webkit-file-upload-button {
