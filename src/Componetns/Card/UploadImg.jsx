@@ -2,13 +2,19 @@ import classes from "./UploadImg.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { $api } from "../../api";
 import { setUser } from "../../store/userSlice";
+import EditUserModal from "../modals/EditUserModal/EditUserModal";
+import { useCallback, useState } from "react";
+import ChangeUserPasswordModal from "../modals/ChangeUserPasswordModal/ChangeUserPasswordModal";
 
 const UploadAndDisplayImage = () => {
   const defaultImageUrl = 'public/фото.png'; // Замени на путь к дефолтному изображению
   const dispatch = useDispatch();
+
+  const [isEditUserModalOpen, setIsEditUserModalOpen] = useState(false);
+  const [isChangePasswordModalOpen, setIsChangePasswordModalOpen] = useState(false);
+  const [invalidPasswordList, setInvalidPasswordList] = useState([]);
   const user = useSelector(state => state.user.user);
 
-  console.log('user', user)
   const handleImageChange = async (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -22,8 +28,32 @@ const UploadAndDisplayImage = () => {
     console.log('result', updatedUserData)
   };
 
+  const handleUserDataSave = useCallback(async (data) => {
+    const { data: updatedUserData } = await $api.put('/v1/auth', data);
+    dispatch(setUser(updatedUserData.user))
+    setIsEditUserModalOpen(false);
+  }, [dispatch]);
+
+  const handleChangePassword = useCallback(async (data) => {
+    const { data: updatedUserData } = await $api.put('/v1/auth/registration', data);
+    if (updatedUserData?.errorCode && updatedUserData?.errorCode === 'INVALID_PASSWORD') {
+      setInvalidPasswordList(list => [...list, data.currentPassword])
+      return;
+    }
+    dispatch(setUser(updatedUserData.user))
+    setIsChangePasswordModalOpen(false);
+  }, [dispatch]);
+
   return (
     <div>
+      {user && isEditUserModalOpen && <EditUserModal user={user} onClose={() => setIsEditUserModalOpen(false)} onSave={handleUserDataSave} />}
+      {isChangePasswordModalOpen && (
+        <ChangeUserPasswordModal
+          onClose={() => setIsChangePasswordModalOpen(false)}
+          onChangePassword={handleChangePassword}
+          invalidPasswordList={invalidPasswordList}
+        />
+      )}
       <img
         alt="not found"
         width="220px"
@@ -171,7 +201,7 @@ const UploadAndDisplayImage = () => {
         </p>
       </div>
       <div className={classes.div__change}>
-        <a href="" className={classes.p__change}>
+        <span href="" className={classes.p__change} onClick={() => setIsEditUserModalOpen(true)}>
           Редактировать личные данные{" "}
           <svg
             width="16.000000"
@@ -192,8 +222,8 @@ const UploadAndDisplayImage = () => {
             />
             <g opacity="0.000000" />
           </svg>
-        </a>
-        <a href="" className={classes.p__change}>
+        </span>
+        <a  className={classes.p__change} onClick={() => setIsChangePasswordModalOpen(true)}>
           Изменить пароль{" "}
           <svg
             width="16.000000"

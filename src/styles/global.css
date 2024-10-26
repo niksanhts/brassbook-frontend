@@ -6,6 +6,8 @@
 
 html {
   color: #fff;
+
+  font-family: var(--main-font)
 }
 
 .container {
@@ -19,6 +21,7 @@ html {
   letter-spacing: -0.48px;
   font-family: var(--main-font);
   font-weight: 400;
+
 }
 
 .medium {
