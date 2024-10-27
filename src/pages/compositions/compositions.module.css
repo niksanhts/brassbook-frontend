@@ -2,4 +2,6 @@
   background-color: #F4F4F6;
   display: flex;
   justify-content: space-between;
+
+  /* flex-direction: column; */
 }

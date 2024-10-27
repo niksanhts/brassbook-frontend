@@ -5,6 +5,7 @@ import { setUser } from "../../store/userSlice";
 import EditUserModal from "../modals/EditUserModal/EditUserModal";
 import { useCallback, useState } from "react";
 import ChangeUserPasswordModal from "../modals/ChangeUserPasswordModal/ChangeUserPasswordModal";
+import AlbumListWidget from "../Albums/AlbumListWidget/AlbumListWidget";
 
 const UploadAndDisplayImage = () => {
   const defaultImageUrl = 'public/фото.png'; // Замени на путь к дефолтному изображению
@@ -246,6 +247,7 @@ const UploadAndDisplayImage = () => {
           </svg>
         </a>
       </div>
+      <AlbumListWidget />
     </div>
   );
 };

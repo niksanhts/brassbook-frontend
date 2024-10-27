@@ -1,10 +1,10 @@
 .div__card {
   width: 744px;
-  height: 366px;
+  /* height: 366px; */
   /* Автолейаут */
   display: flex;
   margin-inline: auto;
   padding: 8px 12px 8px 8px;
-  background: url("./карточка.png");
+  background: url("./карточка.png") no-repeat;
   margin-top: 16px;
 }
