@@ -27,3 +27,28 @@
   display: flex;
   gap: 8px;
 }
+
+.paginationButton {
+  border: none;
+  outline: none;
+  background: inherit;
+  cursor: pointer;
+
+  font-size: 20px;
+  color: #230B3F;
+  line-height: 120%;
+  font-weight: bold;
+}
+
+.paginationButtonActive {
+  color: #6B27FF;
+}
+
+.pagination {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding-bottom: 200px;
+}
