@@ -1,5 +1,11 @@
 .user {
   display: flex;
   /* justify-content: space-between; */
+
   background-color: #F4F4F6;
+}
+.user__content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 16px;
 }

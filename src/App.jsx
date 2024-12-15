@@ -20,7 +20,7 @@ function App() {
 
     let userData = null;
     const { data: user } = await $api.post('/v1/auth/check', {
-      accessToken,
+      accessToken: accessToken,
     });
     userData = user;
     if (user?.errorCode) {
@@ -55,9 +55,9 @@ function App() {
     setCurrentPath(location.pathname);
   }, [location.pathname]);
 
-  useEffect(() => {
-    checkAuthentication();
-  }, [checkAuthentication]);
+  // useEffect(() => {
+  //   checkAuthentication();
+  // }, [checkAuthentication]);
 
   return (
     <Routes>

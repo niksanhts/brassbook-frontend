@@ -5,6 +5,6 @@ import albumReducer from './albumSlice.js'
 export const store = configureStore({
   reducer: {
     user: userReducer,
-    albums: albumReducer,
+    // albums: albumReducer,
   }
 })

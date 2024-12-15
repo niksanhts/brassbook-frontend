@@ -3,7 +3,8 @@
   /* height: 366px; */
   /* Автолейаут */
   display: flex;
-  padding: 8px 12px 8px 8px;
+  padding: 8px 12px 8px 0px;
   /* background: url("./карточка.png") no-repeat; */
   margin-top: 16px;
+  /*margin-left: 16px;*/
 }

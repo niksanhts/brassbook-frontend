@@ -49,7 +49,7 @@ const UploadAndDisplayImage = () => {
     }, [dispatch]);
 
     return (
-        <div>
+        <div className={classes.content}>
             {user && isEditUserModalOpen &&
                 <EditUserModal user={user} onClose={() => setIsEditUserModalOpen(false)} onSave={handleUserDataSave}/>}
             {isChangePasswordModalOpen && (
@@ -118,8 +118,6 @@ const UploadAndDisplayImage = () => {
                     </div>
                 </div>
             </div>
-
-            <AlbumListWidget/>
         </div>
     );
 };

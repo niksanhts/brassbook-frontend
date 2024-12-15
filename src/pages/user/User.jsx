@@ -5,18 +5,23 @@ import Voicerecorder from "../../Componetns/VoiceRecorder/VoiceRecorder.jsx";
 import Card from "../../Componetns/Card/Card.jsx";
 import Traks from "../../Componetns/Traks/Traks.jsx";
 import Player from "../../Componetns/player/Player.jsx";
+import AlbumListWidget from "../../Componetns/Albums/AlbumListWidget/AlbumListWidget.jsx";
 
 
 function User(props) {
-  return (
-    <main className={styles.user}>
-      <SideMenu activeSection={'user'}/>
-      <Card/>
-      {/* <Traks/> */}
-      {/* <Voicerecorder/> */}
-      {/* <Player /> */}
-    </main>
-  );
+    return (
+        <main className={styles.user}>
+            <SideMenu activeSection={'user'}/>
+            <div className={styles.user__content}>
+                <Card/>
+                <Traks/>
+                <AlbumListWidget/>
+                {/* <Voicerecorder/> */}
+                {/* <Player /> */}
+            </div>
+
+        </main>
+    );
 }
 
 export default User;
