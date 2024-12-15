@@ -31,7 +31,7 @@ function SignInForm(props) {
     } else {
       localStorage.setItem('accessToken', responseData.accessToken)
       dispatch(setIsAuthorized(true))
-      navigate('/compositions')
+      navigate('/user')
     }
   }
 

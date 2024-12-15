@@ -44,7 +44,7 @@ function HomeHeader({isFooter}) {
         </nav>
         <div className={styles["header__btns"]}>
           <HomeLoginButton color={'blue'} to={'/signin'}>Войти</HomeLoginButton>
-          <HomeLoginButton color={'white'} to={'/signup'}>Зарегестрироваться</HomeLoginButton>
+          <HomeLoginButton color={'white'} to={'/signup'}>Зарегистрироваться</HomeLoginButton>
         </div>
       </div>
     </header>

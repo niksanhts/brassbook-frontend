@@ -1,5 +1,4 @@
 .div__main {
-  position: absolute;
   /* группа */
 
   width: 744px;
@@ -16,19 +15,15 @@
   order: 0;
   align-self: stretch;
   flex-grow: 0;
-  margin-inline-start: 300px;
-  margin-top: 390px;
 }
 
 @media screen and (max-width: 1441px) {
   .div__main {
-    margin-inline-start: 280px;
   }
 }
 
 .div__group {
   /* избранное */
-  position: static;
   width: 368px;
   height: 160px;
   /* Автолейаут */
@@ -59,7 +54,6 @@
   text-align: left;
 
   /* Текст */
-position: static;
 height: 29px;
 /* Автолейаут */
 display: flex;
@@ -89,7 +83,6 @@ letter-spacing: -2%;
 text-align: left;
 
 /* Текст */
-position: static;
 /* width: 137px; */
 height: 24px;
 /* Автолейаут */
@@ -109,13 +102,9 @@ margin: 12px 0px;
 
 .img__group1 {
     width: 154px;
-    position: absolute;
-    margin-inline-start: 190px;
 }
 
 .img__group2 {
     width: 264px;
-    position: absolute;
-    margin-inline-start: 125px;
     margin-top: -15px;
 }
