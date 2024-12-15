@@ -55,9 +55,9 @@ function App() {
     setCurrentPath(location.pathname);
   }, [location.pathname]);
 
-  // useEffect(() => {
-  //   checkAuthentication();
-  // }, [checkAuthentication]);
+  useEffect(() => {
+    checkAuthentication();
+  }, [checkAuthentication]);
 
   return (
     <Routes>

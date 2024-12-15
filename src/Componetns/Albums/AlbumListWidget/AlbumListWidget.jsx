@@ -15,9 +15,10 @@ const ALBUM_LIMIT = 5;
 function AlbumListWidget() {
   const dispatch = useDispatch();
 
-  const albums = useSelector((state) => state.albums.albums);
-  const albumsCount = useSelector((state) => state.albums.albumsCount);
-
+  // const albums = useSelector((state) => state.albums.albums);
+  // const albumsCount = useSelector((state) => state.albums.albumsCount);
+  const albums = []
+  const albumsCount = 0
   const [activeFilter, setActiveFilter] = useState('created_at');
   const [direction, setDirection] = useState('desc');
   const [searchFilter, setSearchFilter] = useState('');
@@ -78,9 +79,9 @@ function AlbumListWidget() {
     dispatch(loadAlbums({ name: searchFilter, limit: ALBUM_LIMIT, offset, direction, sortBy: activeFilter }));
   }, [activeFilter, direction, dispatch, offset, searchFilter])
 
-  useEffect(() => {
-    dispatch(loadAlbums({ name: searchFilter, limit: ALBUM_LIMIT, offset, direction, sortBy: activeFilter }));
-  }, [activeFilter, direction, dispatch, offset, searchFilter])
+  // useEffect(() => {
+  //   dispatch(loadAlbums({ name: searchFilter, limit: ALBUM_LIMIT, offset, direction, sortBy: activeFilter }));
+  // }, [activeFilter, direction, dispatch, offset, searchFilter])
 
   return (
     <div className={styles.wrapper}>
