@@ -55,7 +55,7 @@
 }
 
 .a__group::after {
-    content: url(public/vuesax_bold_arrow-right.png);
+    content: url(vuesax_bold_arrow-right.png);
     margin-top: 8px;
 }
 

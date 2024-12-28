@@ -6,6 +6,7 @@ import Card from "../../Componetns/Card/Card.jsx";
 import Traks from "../../Componetns/Traks/Traks.jsx";
 import Player from "../../Componetns/player/Player.jsx";
 import AlbumListWidget from "../../Componetns/Albums/AlbumListWidget/AlbumListWidget.jsx";
+import Favorites from '../favorites/Favorites.jsx';
 
 
 function User(props) {
@@ -13,9 +14,9 @@ function User(props) {
         <main className={styles.user}>
             <SideMenu activeSection={'user'}/>
             <div className={styles.user__content}>
-                <Card/>
-                <Traks/>
-                <AlbumListWidget/>
+                <Card />
+                <Traks />
+                <AlbumListWidget />
                 {/* <Voicerecorder/> */}
                 {/* <Player /> */}
             </div>

@@ -3,6 +3,7 @@ import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import Home from "./pages/home/Home.jsx";
 import SignIn from "./pages/signIn/SignIn.jsx";
 import Compositions from "./pages/compositions/Compositions.jsx";
+import Favorites from './pages/favorites/Favorites.jsx';
 import User from "./pages/user/User.jsx";
 import SignUp from "./pages/signUp/SignUp.jsx";
 import { useDispatch } from 'react-redux';
@@ -67,6 +68,7 @@ function App() {
         <Route path="signup" element={<SignUp />} />
         <Route path="compositions" element={<Compositions />} />
         <Route path="user" element={<User />} />
+        <Route path="favorites" element={<Favorites />} />
       </Route>
     </Routes>
   );

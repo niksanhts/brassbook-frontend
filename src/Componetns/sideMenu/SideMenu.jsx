@@ -140,7 +140,9 @@ function SideMenu({activeSection}) {
       </ul>
       <p className={classes.signin__backlink}>Мои альбомы</p>
       <ul className={classes.ul__menu2}>
-        <a href="">Избранное</a>
+      <Link className={`${classes['menu__item']} ${activeSection === 'favorites' ? classes['menu__item_active'] : ''}`} to='/favorites'>
+        Избранное
+      </Link>
         <a href="">Мои записи</a>
         <a href="">Название</a>
         <a href="">Короткое название</a>

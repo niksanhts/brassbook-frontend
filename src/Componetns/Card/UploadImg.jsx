@@ -11,7 +11,7 @@ import heartVuesax from "../../assets/img/heart.svg";
 import arrowVuesax from "../../assets/img/right-arrow-vuesax.svg";
 
 const UploadAndDisplayImage = () => {
-    const defaultImageUrl = 'public/фото.png'; // Замени на путь к дефолтному изображению
+    const defaultImageUrl = 'фото.png'; // Замени на путь к дефолтному изображению
     const dispatch = useDispatch();
 
     const [isEditUserModalOpen, setIsEditUserModalOpen] = useState(false);
