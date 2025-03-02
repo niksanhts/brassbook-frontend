@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from './card.module.css';
 import musics from '../../assets/data';
 import {timer} from './timer';
@@ -7,9 +7,34 @@ const Card = ({props: { musicNumber, setMusicNumber }}) => {
     const [duration, setDuration] = useState(1);
     const [currentTime, setCurrentTime] = useState(0);
     const [play, setPlay] = useState(false);
-
+    const [playbackRate, setPlaybackRate] = useState(1.0);
+    const [pitch, setPitch] = useState(0);
+    
     const audioRef = useRef();
-
+    const audioContextRef = useRef(null);
+    const sourceNodeRef = useRef(null);
+    const gainNodeRef = useRef(null);
+    
+    useEffect(() => {
+        return () => {
+            if (audioContextRef.current && audioContextRef.current.state !== 'closed') {
+                audioContextRef.current.close();
+            }
+        };
+    }, []);
+    
+    useEffect(() => {
+        if (audioRef.current) {
+            audioRef.current.playbackRate = playbackRate;
+        }
+    }, [playbackRate]);
+    
+    useEffect(() => {
+        if (sourceNodeRef.current) {
+            sourceNodeRef.current.detune.value = pitch;
+        }
+    }, [pitch]);
+    
     function handleLoadStart(e){
         const src = e.nativeEvent.srcElement.src;
         const audio = new Audio(src);
@@ -22,6 +47,8 @@ const Card = ({props: { musicNumber, setMusicNumber }}) => {
         if(play){
             audioRef.current.play()
         };
+        
+        audioRef.current.playbackRate = playbackRate;
     }
 
     function handlePlayingAudio(){
@@ -54,15 +81,32 @@ const Card = ({props: { musicNumber, setMusicNumber }}) => {
         })
 
     }
+
+    function handlePlaybackRateChange(e) {
+        const newRate = parseFloat(e.target.value);
+        setPlaybackRate(newRate);
+        if (audioRef.current) {
+            audioRef.current.playbackRate = newRate;
+        }
+    }
+    
+    function handlePitchChange(e) {
+        const newPitch = parseInt(e.target.value);
+        setPitch(newPitch);
+        
+        if (sourceNodeRef.current) {
+            sourceNodeRef.current.detune.value = newPitch;
+        }
+    }
+
     for (let e of document.querySelectorAll('input[type="range"].slider-progress')) {
         e.style.setProperty('--value', e.value);
         e.style.setProperty('--min', e.min == '' ? '0' : e.min);
         e.style.setProperty('--max', e.max == '' ? '100' : e.max);
         e.addEventListener('input', () => e.style.setProperty('--value', e.value));
-      }
+    }
     return(
         <div className={styles.cardContainer}>
-            <a href="#" className={styles.takeApart}><img src="/src/assets/images/take-apart.png" alt="" /></a>
             <div className={styles.card}>
                 <div className={styles.about}>
                     <div className={styles.image}>
@@ -83,8 +127,6 @@ const Card = ({props: { musicNumber, setMusicNumber }}) => {
                     </div>
                 </div>
 
-                
-
                 <div className={styles.controls}>
                     <button onClick={() => handleNextPrev(-1)}>
                         <p className="_icon-prev"></p>
@@ -104,6 +146,33 @@ const Card = ({props: { musicNumber, setMusicNumber }}) => {
                     onLoadStart={handleLoadStart} ref={audioRef} onTimeUpdate={handleTimeUpdate} onEnded={() => handleNextPrev(1)}></audio>
 
                 </div>
+                
+                <div className={styles.playbackControls}>
+                    <p>Скорость воспроизведения: {playbackRate.toFixed(1)}x</p>
+                    <input 
+                        type="range" 
+                        min="0.5" 
+                        max="2" 
+                        step="0.1" 
+                        value={playbackRate} 
+                        onChange={handlePlaybackRateChange}
+                        className="styled-slider slider-progress"
+                    />
+                </div>
+                
+                <div className={styles.toneControls}>
+                    <p>Тон: {pitch > 0 ? `+${pitch}` : pitch}</p>
+                    <input 
+                        type="range" 
+                        min="-1200" 
+                        max="1200" 
+                        step="100" 
+                        value={pitch} 
+                        onChange={handlePitchChange}
+                        className="styled-slider slider-progress"
+                    />
+                </div>
+                
                 <button className={styles.download}>
                     <p>
                         <span className="_icon-download"></span>
@@ -138,3 +207,5 @@ const Card = ({props: { musicNumber, setMusicNumber }}) => {
 }
 
 export default Card;
+
+export {Card};

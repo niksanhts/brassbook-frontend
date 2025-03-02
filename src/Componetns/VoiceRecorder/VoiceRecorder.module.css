@@ -1,22 +1,24 @@
 .voicerecorder {
     width: 366px;
     height: 250px;
-    position: relative;
+    /*position: relative;*/
     display: flex;
     flex-direction: column;
-    z-index: 1;
+    /*z-index: 1;*/
     padding: 20px;
     background: url('./запись.png') center/cover no-repeat;
     margin-top: 16px;
     justify-content: flex-end;
-    margin-right: -367px;
+    border-radius: 20px;
+
+    /*margin-right: -367px;*/
 }
 .voicerecorder_title {
     font-family: var(--main-font);
     font-size: 20px;
     font-weight: 700;
     line-height: 140%;
-    letter-spacing: -2%;
+    /*letter-spacing: -2%;*/
     color: #ffff;
     padding-bottom: 4px;
 }
