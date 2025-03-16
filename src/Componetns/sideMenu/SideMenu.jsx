@@ -144,9 +144,7 @@ function SideMenu({activeSection}) {
         Избранное
       </Link>
         <a href="">Мои записи</a>
-        <a href="">Название</a>
-        <a href="">Короткое название</a>
-        <a href="">Длинное название</a>
+        
       </ul>
       <button className={classes.button__all}>
         Посмотреть все{" "}
@@ -203,3 +201,8 @@ function SideMenu({activeSection}) {
 }
 
 export default SideMenu;
+/*
+<a href="">Название</a>
+        <a href="">Короткое название</a>
+        <a href="">Длинное название</a>
+        */
